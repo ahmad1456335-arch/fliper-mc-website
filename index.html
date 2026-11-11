@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#100817">
+<meta name="description" content="FLIPER MC — official Minecraft community. Join the Discord, visit the market, and meet the team.">
+<meta property="og:title" content="FLIPER MC | Official Community">
+<meta property="og:description" content="Your next adventure starts here.">
+<meta property="og:image" content="assets/fliper-mc-logo.png">
+<title>FLIPER MC — Official Community</title>
+<link rel="icon" href="assets/fliper-mc-logo.png">
+<style>
+:root{--bg:#0c0711;--panel:#17101f;--panel2:#20132b;--line:#35223f;--purple:#c72cff;--purple2:#8e35d9;--text:#fbf7ff;--muted:#b9aabe;--radius:20px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.shell{min-height:100vh;display:grid;grid-template-columns:250px minmax(0,1fr)}
+.sidebar{position:sticky;top:0;height:100vh;padding:25px 17px;background:#100a16;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;align-items:center;gap:12px;padding:4px 8px;font-weight:950;letter-spacing:.04em;font-size:1.02rem}.brand img{width:43px;height:43px;object-fit:cover;border-radius:12px}.brand b{color:var(--purple)}
+.nav-label{padding:0 12px;color:#8f7b9a;text-transform:uppercase;letter-spacing:.15em;font-size:.68rem;font-weight:900}
+.nav{display:grid;gap:7px}.nav button{display:flex;align-items:center;gap:12px;width:100%;padding:12px 13px;text-align:left;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted);font-weight:750;transition:.18s}.nav button:hover{background:#21132c;color:white}.nav button.active{color:white;background:linear-gradient(100deg,#48205b,#25132f);border-color:#613078}.nav .ico{width:23px;text-align:center;font-size:1.05rem}
+.side-bottom{margin-top:auto}.server-card{border:1px solid var(--line);background:var(--panel);border-radius:15px;padding:15px}.server-card small{color:var(--muted)}.server-card strong{display:block;margin:4px 0 11px;font-size:.92rem;overflow-wrap:anywhere}.copy-btn{width:100%;border:1px solid #543066;background:#291536;border-radius:9px;padding:9px;font-size:.8rem;font-weight:850}.side-foot{padding:12px 4px 0;color:#8d7a98;font-size:.74rem}
+.main{min-width:0}.topbar{height:76px;padding:0 clamp(18px,4vw,48px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(12,7,17,.86);position:sticky;top:0;z-index:5;backdrop-filter:blur(16px)}.crumb{color:var(--muted);font-size:.9rem}.crumb strong{color:white}.top-actions{display:flex;align-items:center;gap:10px}.icon-btn{width:42px;height:42px;border:1px solid var(--line);background:var(--panel);border-radius:12px;display:none;place-items:center;font-size:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:99px;border:1px solid #523064;background:#21132d;color:#ead5f7;font-size:.75rem;font-weight:800;letter-spacing:.035em}.dot{width:7px;height:7px;border-radius:50%;background:#baff8a;box-shadow:0 0 10px #baff8a}
+.content{width:min(1120px,100%);margin:0 auto;padding:clamp(22px,4vw,48px)}.page{display:none;animation:appear .22s ease}.page.active{display:block}@keyframes appear{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{min-height:min(640px,calc(100vh - 155px));display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:clamp(22px,4vw,58px);padding:12px 0 24px}
+h1{font-size:clamp(3.4rem,7.5vw,6.5rem);line-height:.9;letter-spacing:-.085em;margin:22px 0 20px;font-weight:1000}h1 span{display:block;background:linear-gradient(100deg,#fdf7ff 5%,#e2a1ff 50%,var(--purple) 90%);background-clip:text;-webkit-background-clip:text;color:transparent}
+.intro{max-width:520px;color:var(--muted);font-size:clamp(.98rem,1.5vw,1.1rem);line-height:1.8;margin:0}.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:13px 17px;border:1px solid var(--line);background:var(--panel);border-radius:12px;font-weight:850;font-size:.88rem;transition:transform .18s,border-color .18s}.btn:hover{transform:translateY(-2px);border-color:#8751a1}.btn.primary{background:linear-gradient(120deg,#bd25f0,#7c32c6);border-color:transparent;box-shadow:0 9px 30px #a123d52a}
+.art{position:relative;display:grid;place-items:center;min-height:300px}.art::before{content:"";position:absolute;width:min(350px,85%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#a321d43a,transparent 70%);border:1px solid #7e399455;box-shadow:0 0 70px #a321d41a}.logo{position:relative;width:min(285px,78%);max-height:300px;object-fit:contain;filter:drop-shadow(0 20px 28px #a51bd53b)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}.metric{padding:15px;border:1px solid var(--line);border-radius:14px;background:#130c1a}.metric b{display:block;font-size:.87rem}.metric span{color:var(--muted);font-size:.76rem}
+.page-head{margin:5px 0 27px}.eyebrow{color:#d88aff;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:900}.page-head h2{font-size:clamp(2.1rem,5vw,3.4rem);letter-spacing:-.06em;line-height:1.02;margin:10px 0}.page-head p{color:var(--muted);max-width:600px;margin:0;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{padding:22px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#1c1126,#120b18);min-height:175px}.card .symbol{font-size:1.5rem;color:#e2a3ff}.card h3{margin:14px 0 7px;font-size:1.05rem}.card p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.65}
+.link-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.link-card{display:flex;align-items:center;gap:14px;padding:18px;border:1px solid var(--line);background:var(--panel);border-radius:16px;min-width:0;transition:.18s}.link-card:hover{border-color:#78418d;transform:translateY(-2px)}.link-icon{flex:none;display:grid;place-items:center;width:45px;height:45px;border-radius:13px;background:#321840;font-size:1.25rem}.link-card b{display:block}.link-card small{color:var(--muted);overflow-wrap:anywhere}
+.people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.person{display:flex;align-items:center;gap:15px;padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:16px}.avatar{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#c72cff,#6230a5);font-size:1.3rem;font-weight:950}.person small{display:block;color:var(--muted);margin-top:3px}
+.team-group{margin:26px 0 12px;color:#d88aff;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:900}.team-group:first-of-type{margin-top:4px}
+.person .role{display:inline-block;margin-top:5px;padding:3px 9px;border-radius:99px;background:#321840;border:1px solid #613078;color:#ecd2fb;font-size:.7rem;font-weight:850;letter-spacing:.03em}.person .about{margin:8px 0 0;color:var(--muted);font-size:.82rem;line-height:1.55}.person{align-items:flex-start}.avatar{flex:none}
+.notice{margin-top:20px;padding:16px;border-radius:13px;background:#1b1125;border:1px solid var(--line);color:var(--muted);font-size:.86rem;line-height:1.6}
+.footer{border-top:1px solid var(--line);padding:20px clamp(18px,4vw,48px);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#94839d;font-size:.76rem}.footer a:hover{color:white}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f9eaff;color:#240c30;padding:10px 15px;border-radius:10px;font-weight:850;font-size:.85rem;transition:.2s;z-index:30}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.shell{grid-template-columns:1fr}.sidebar{position:fixed;z-index:20;left:0;top:0;width:min(290px,85vw);transform:translateX(-105%);transition:transform .22s;height:100dvh;box-shadow:20px 0 70px #0008}.sidebar.open{transform:translateX(0)}.icon-btn{display:grid}.topbar{height:66px}.hero{min-height:auto;grid-template-columns:1fr;gap:8px;padding-top:24px}.art{grid-row:1;min-height:210px}.logo{width:min(200px,60%);max-height:205px}.hero-copy{max-width:680px}.cards{grid-template-columns:1fr}.card{min-height:0}.content{padding:25px 22px}.hero h1{font-size:clamp(3.6rem,12vw,5.8rem)}}
+@media(max-width:540px){.content{padding:22px 16px}.topbar{padding:0 16px}.hero{padding-top:10px;gap:0}.art{min-height:180px}.logo{width:170px;max-height:170px}.hero h1{font-size:clamp(3.35rem,16vw,4.7rem);margin:17px 0 14px}.intro{font-size:.94rem;line-height:1.65}.actions{display:grid;grid-template-columns:1fr 1fr;margin-top:20px}.btn{padding:12px 10px;font-size:.82rem}.metrics{gap:7px}.metric{padding:11px 9px}.metric b{font-size:.72rem}.metric span{font-size:.68rem}.link-list,.people{grid-template-columns:1fr}.page-head h2{font-size:2.35rem}.footer{padding:17px 16px}.top-actions .discord-top{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* FLIPER AI chat */
+.bot-launch{position:fixed;right:20px;bottom:20px;z-index:80;border:0;border-radius:999px;padding:14px 18px;color:#fff;font-weight:900;background:linear-gradient(135deg,#a72de0,#6724a8);box-shadow:0 10px 35px #8b2ac955;cursor:pointer}
+.bot-panel{position:fixed;right:18px;bottom:82px;z-index:80;width:min(390px,calc(100vw - 28px));height:min(590px,calc(100dvh - 105px));border:1px solid #56336b;border-radius:20px;background:#100a19;box-shadow:0 22px 80px #0009;overflow:hidden;display:none;flex-direction:column}
+.bot-panel.open{display:flex}.bot-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:#21102f;border-bottom:1px solid #49305a}
+.bot-brand{display:flex;align-items:center;gap:10px}.bot-avatar{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#c33cff,#6324a5);font-weight:1000;color:white}
+.bot-head strong{display:block;color:white}.bot-head small{color:#b9a9c5;font-size:.75rem}.bot-close{background:transparent;border:0;color:white;font-size:1.5rem;cursor:pointer}
+.bot-messages{padding:14px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:10px}
+.chat-msg{max-width:88%;padding:11px 13px;border:1px solid #493653;border-radius:14px;font-size:.87rem;white-space:pre-wrap;overflow-wrap:anywhere;color:#f4eafa}
+.chat-msg.bot{align-self:flex-start;background:#21152c;border-top-left-radius:5px}.chat-msg.user{align-self:flex-end;background:#48245e;border-top-right-radius:5px}
+.chat-typing{color:#b9a9c5;font-size:.78rem;padding:0 15px 8px;display:none}.chat-typing.show{display:block}
+.chat-suggestions{display:flex;gap:7px;overflow-x:auto;padding:0 12px 10px}.chat-suggestions button{white-space:nowrap;border:1px solid #493653;border-radius:999px;padding:7px 10px;background:#1c1126;color:#eadcf5;font-size:.75rem;cursor:pointer}
+.chat-form{display:flex;gap:8px;padding:11px;border-top:1px solid #493653;background:#0d0814}.chat-form input{min-width:0;flex:1;border:1px solid #493653;border-radius:12px;background:#1a1122;color:white;padding:12px;font-size:.88rem}
+.chat-form button{border:0;border-radius:12px;padding:0 15px;background:linear-gradient(135deg,#a72de0,#6724a8);color:#fff;font-weight:900;cursor:pointer}.chat-form button:disabled{opacity:.5}
+.chat-disclaimer{text-align:center;color:#9d8ca9;font-size:.67rem;padding:0 10px 9px}
+@media(max-width:480px){.bot-launch{right:12px;bottom:12px}.bot-panel{right:8px;bottom:70px;width:calc(100vw - 16px);height:min(610px,calc(100dvh - 84px))}}
+
+
+/* Help + Songs panel */
+.bot-tabs{display:flex;gap:6px;padding:8px 10px;background:#160d21;border-bottom:1px solid #49305a}.bot-tab{flex:1;border:1px solid #493653;border-radius:10px;background:#1c1126;color:#cbb9d8;padding:9px;font-weight:850;font-size:.82rem}.bot-tab.active{background:linear-gradient(135deg,#a72de0,#6724a8);color:#fff;border-color:transparent}
+.tab-view{display:none;flex:1;min-height:0;flex-direction:column}.tab-view.active{display:flex}
+.q-list{display:flex;flex-wrap:wrap;gap:7px;padding:10px 12px;border-top:1px solid #493653;background:#0d0814;max-height:42%;overflow:auto}.q-list button{border:1px solid #493653;border-radius:999px;padding:8px 11px;background:#1c1126;color:#eadcf5;font-size:.78rem;font-weight:700}.q-list button:hover{border-color:#a72de0}
+.chat-msg a{color:#e2a3ff;text-decoration:underline}
+.songs-wrap{flex:1;overflow:auto;padding:14px;display:flex;flex-direction:column;gap:12px}
+.now{border:1px solid #493653;border-radius:16px;padding:14px;background:linear-gradient(145deg,#21102f,#140c1d)}.now small{color:#b9a9c5;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.now-title{font-weight:900;font-size:1.05rem;margin:4px 0 2px;overflow-wrap:anywhere}.now-status{color:#b9a9c5;font-size:.76rem;min-height:1.1em}.now-status.err{color:#ff9db4}
+.seek{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:.72rem;color:#b9a9c5}.seek input{flex:1;accent-color:#c72cff;min-width:0}
+.ctrls{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:10px}.cbtn{width:46px;height:46px;border-radius:50%;border:1px solid #543066;background:#291536;color:#fff;font-size:1.1rem;display:grid;place-items:center}.cbtn.main{width:58px;height:58px;font-size:1.4rem;background:linear-gradient(135deg,#bd25f0,#7c32c6);border-color:transparent}
+.vol{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:.8rem;color:#cbb9d8}.vol input{flex:1;accent-color:#c72cff;min-width:0}.vol button{border:0;background:transparent;font-size:1.1rem;color:#fff}
+.song-list{display:grid;gap:8px}.song{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:11px 12px;border:1px solid #493653;border-radius:13px;background:#1a1122;color:#fff}.song:hover{border-color:#8751a1}.song.playing{border-color:#c72cff;background:#2a1438}.song .no{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#321840;font-size:.8rem;font-weight:900;color:#e2a3ff}.song b{display:block;font-size:.9rem}.song small{color:#b9a9c5;font-size:.72rem}.song .pl{margin-left:auto;font-size:1.1rem;color:#e2a3ff}
+.music-fab{position:fixed;right:20px;bottom:76px;z-index:80;width:44px;height:44px;border-radius:50%;border:1px solid #613078;background:#21102f;color:#fff;font-size:1.1rem;display:grid;place-items:center;box-shadow:0 8px 24px #0008}
+.tap-hint{position:fixed;left:50%;bottom:78px;transform:translateX(-50%);z-index:90;background:#f9eaff;color:#240c30;padding:10px 15px;border-radius:12px;font-weight:850;font-size:.82rem;box-shadow:0 8px 30px #0008;display:none;max-width:90vw;text-align:center}.tap-hint.show{display:block}
+@media(max-width:480px){.music-fab{right:12px;bottom:66px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Main menu">
+  <a class="brand" href="#home" data-page="home"><img src="assets/fliper-mc-logo.png" alt="FLIPER MC logo"><span>FLIPER <b>MC</b></span></a>
+  <div class="nav-label">Navigation</div>
+  <nav class="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span> Overview</button>
+    <button data-page="features"><span class="ico">✦</span> Features</button>
+    <button data-page="market"><span class="ico">▣</span> Market</button>
+    <button data-page="community"><span class="ico">◈</span> Community</button>
+    <button data-page="team"><span class="ico">♙</span> Our Team</button>
+  </nav>
+  <div class="side-bottom">
+    <div class="server-card"><small>Minecraft server</small><strong>play.flipermc.fun</strong><button class="copy-btn" id="copyIp">▢ &nbsp; Copy server address</button></div>
+    <div class="side-foot">© <span id="year"></span> FLIPER MC</div>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <div class="crumb"><strong>FLIPER MC</strong> <span style="color:#806b8d">/</span> <span id="crumbText">Overview</span></div>
+    <div class="top-actions"><a class="btn primary discord-top" href="https://discord.gg/7W9Gdq792p" target="_blank" rel="noopener noreferrer">Join Discord ↗</a><button class="icon-btn" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button></div>
+  </header>
+
+  <div class="content">
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div class="hero-text">
+          <div class="pill"><span class="dot"></span> OFFICIAL MINECRAFT COMMUNITY</div>
+          <h1>PLAY YOUR<br><span>OWN WAY.</span></h1>
+          <p class="intro">Welcome to FLIPER MC. Find your crew, take on new challenges, and make your mark. Your next adventure starts here.</p>
+          <div class="actions"><a class="btn primary" href="https://www.mediafire.com/file/liffify8jxp9tph/FLIPER-MC.apk/file" target="_blank" rel="noopener noreferrer">⬇ Download Official App</a><a class="btn" href="https://market.flipersmp.workers.dev/" target="_blank" rel="noopener noreferrer">▣ Open Official Store ↗</a><a class="btn" href="https://discord.gg/7W9Gdq792p" target="_blank" rel="noopener noreferrer">Join Discord ↗</a></div>
+        </div>
+        <div class="art"><img class="logo" src="assets/fliper-mc-logo.png" alt="FLIPER MC logo"></div>
+      </div>
+      <div class="metrics"><div class="metric"><b>YOUR ADVENTURE</b><span>Play your way</span></div><div class="metric"><b>YOUR COMMUNITY</b><span>Find your people</span></div><div class="metric"><b>YOUR LEGACY</b><span>Make your mark</span></div></div>
+    </section>
+
+    <section class="page" id="page-features">
+      <div class="page-head"><div class="eyebrow">The experience</div><h2>Made for the way<br>you play.</h2><p>Three simple things at the heart of FLIPER MC.</p></div>
+      <div class="cards"><article class="card"><div class="symbol">⚔</div><h3>Challenge yourself</h3><p>Test your skills, build your strategy, and make every session count.</p></article><article class="card"><div class="symbol">◇</div><h3>Build your legacy</h3><p>Explore, create, progress, and write your own story in the world.</p></article><article class="card"><div class="symbol">✦</div><h3>Join the crew</h3><p>Connect with players and catch community updates on Discord.</p></article></div>
+    </section>
+
+    <section class="page" id="page-market">
+      <div class="page-head"><div class="eyebrow">Official app & store</div><h2>The FLIPER market.</h2><p>Download the official FLIPER MC app or open our web store.</p></div>
+      <div class="link-list">
+        <a class="link-card" href="https://www.mediafire.com/file/liffify8jxp9tph/FLIPER-MC.apk/file" target="_blank" rel="noopener noreferrer"><span class="link-icon">⬇</span><span><b>Download Official FLIPER MC App ↗</b><small>FLIPER-MC.apk · MediaFire</small></span></a>
+        <a class="link-card" href="https://market.flipersmp.workers.dev/" target="_blank" rel="noopener noreferrer"><span class="link-icon">▣</span><span><b>Open Official FLIPER MC Store ↗</b><small>market.flipersmp.workers.dev</small></span></a>
+      </div>
+      <div class="notice">Use the official app and store links above. Only install apps from sources you trust.</div>
+    </section>
+
+    <section class="page" id="page-community">
+      <div class="page-head"><div class="eyebrow">Stay in the loop</div><h2>Find us online.</h2><p>Official community, social, and store links in one place.</p></div>
+      <div class="link-list">
+        <a class="link-card" href="https://discord.gg/7W9Gdq792p" target="_blank" rel="noopener noreferrer"><span class="link-icon">◈</span><span><b>Discord ↗</b><small>Join the FLIPER MC community</small></span></a>
+        <a class="link-card" href="https://www.instagram.com/ahmad_plyz?rpxt=ZDB3ZjdnZDc3MmR6" target="_blank" rel="noopener noreferrer"><span class="link-icon">◎</span><span><b>Instagram ↗</b><small>@ahmad_plyz</small></span></a>
+        <a class="link-card" href="https://www.mediafire.com/file/liffify8jxp9tph/FLIPER-MC.apk/file" target="_blank" rel="noopener noreferrer"><span class="link-icon">⬇</span><span><b>Official App Download ↗</b><small>FLIPER-MC.apk</small></span></a>
+        <a class="link-card" href="https://market.flipersmp.workers.dev/" target="_blank" rel="noopener noreferrer"><span class="link-icon">▣</span><span><b>Official Market ↗</b><small>market.flipersmp.workers.dev</small></span></a>
+      </div>
+    </section>
+
+    <section class="page" id="page-team">
+      <div class="page-head"><div class="eyebrow">The people behind it</div><h2>Meet the team.</h2><p>Built with the FLIPER MC community in mind.</p></div>
+
+      <div class="team-group">Leadership</div>
+      <div class="people">
+        <div class="person"><div class="avatar">A</div><div><b>Ahmadplayz</b><span class="role">Founder</span><p class="about">Started FLIPER MC and leads the vision for the whole community.</p></div></div>
+        <div class="person"><div class="avatar">T</div><div><b>TAPPU</b><span class="role">Co-Founder</span><p class="about">Works side by side with the Founder to grow and guide FLIPER MC.</p></div></div>
+      </div>
+
+      <div class="team-group">Management</div>
+      <div class="people">
+        <div class="person"><div class="avatar">M</div><div><b>mujtaba_playz89</b><span class="role">Manager</span><p class="about">Manages the team and staff, and keeps day-to-day server work and events running smoothly.</p></div></div>
+      </div>
+
+      <div class="team-group">Admin</div>
+      <div class="people">
+        <div class="person"><div class="avatar">C</div><div><b>cutie_not_found</b><span class="role">Admin Staff</span><p class="about">Helps keep the server and community safe, fair and friendly.</p></div></div>
+      </div>
+
+      <div class="team-group">Discord Staff</div>
+      <div class="people">
+        <div class="person"><div class="avatar">M</div><div><b>maybe_zishii</b><span class="role">Discord Staff</span><p class="about">Helps members and answers questions in our Discord.</p></div></div>
+        <div class="person"><div class="avatar">L</div><div><b>LOST_DOST</b><span class="role">Discord Staff</span><p class="about">Helps members and answers questions in our Discord.</p></div></div>
+      </div>
+      <div class="notice">Staff will never ask for your password or payment details. Need help? Ask in our Discord.</div>
+    </section>
+  </div>
+  <footer class="footer"><span>© <span id="year2"></span> FLIPER MC. All rights reserved.</span><span><a href="https://discord.gg/7W9Gdq792p" target="_blank" rel="noopener noreferrer">Discord</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/ahmad_plyz?rpxt=ZDB3ZjdnZDc3MmR6" target="_blank" rel="noopener noreferrer">Instagram</a></span></footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
+<script>
+(() => {
+  const sidebar=document.getElementById('sidebar'),toggle=document.getElementById('menuToggle');
+  const names={home:'Overview',features:'Features',market:'Market',community:'Community',team:'Our Team'};
+  function showPage(name){
+    if(!names[name])name='home';
+    document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));
+    document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));
+    document.getElementById('crumbText').textContent=names[name];
+    sidebar.classList.remove('open');toggle.setAttribute('aria-expanded','false');
+    if(location.hash!=='#'+name)history.replaceState(null,'','#'+name);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();showPage(b.dataset.page)}));
+  document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));
+  toggle.addEventListener('click',()=>{const open=sidebar.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){sidebar.classList.remove('open');toggle.setAttribute('aria-expanded','false')}});
+  const page=location.hash.slice(1);if(names[page])showPage(page);
+  const year=new Date().getFullYear();document.getElementById('year').textContent=year;document.getElementById('year2').textContent=year;
+  const toast=document.getElementById('toast');let toastTimer;
+  document.getElementById('copyIp').addEventListener('click',async()=>{
+    try{
+      if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText('play.flipermc.fun');
+      else {const el=document.createElement('textarea');el.value='play.flipermc.fun';el.style.position='fixed';el.style.opacity='0';document.body.appendChild(el);el.select();const ok=document.execCommand('copy');el.remove();if(!ok)throw new Error('copy failed');}
+      toast.textContent='Server address copied!';toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+    }catch(_){toast.textContent='Server address: play.flipermc.fun';toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),3200);}
+  });
+})();
+</script>
+
+<button class="music-fab" id="musicFab" type="button" aria-label="Play or pause music" title="Play / pause music">♪</button>
+<button class="bot-launch" id="botLaunch" type="button">✦ Help &amp; Songs</button>
+<div class="tap-hint" id="tapHint">🎵 Tap anywhere to start the music</div>
+<aside class="bot-panel" id="botPanel" aria-label="FLIPER MC help and songs">
+  <div class="bot-head">
+    <div class="bot-brand"><div class="bot-avatar">F</div><div><strong>FLIPER Help</strong><small>Quick answers · Songs</small></div></div>
+    <button class="bot-close" id="botClose" type="button" aria-label="Close">×</button>
+  </div>
+  <div class="bot-tabs">
+    <button class="bot-tab active" type="button" data-tab="help">💬 Help</button>
+    <button class="bot-tab" type="button" data-tab="songs">🎵 Songs</button>
+  </div>
+
+  <div class="tab-view active" id="tab-help">
+    <div class="bot-messages" id="chatMessages" aria-live="polite">
+      <div class="chat-msg bot">Hey! 👋 Tap a question below and I will answer. 💜</div>
+    </div>
+    <div class="q-list" id="qList"></div>
+  </div>
+
+  <div class="tab-view" id="tab-songs">
+    <div class="songs-wrap">
+      <div class="now">
+        <small>Now playing</small>
+        <div class="now-title" id="nowTitle">—</div>
+        <div class="now-status" id="nowStatus"></div>
+        <div class="seek"><span id="tCur">0:00</span><input id="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Seek"><span id="tDur">0:00</span></div>
+        <div class="ctrls">
+          <button class="cbtn" id="btnPrev" type="button" aria-label="Previous song">⏮</button>
+          <button class="cbtn main" id="btnPlay" type="button" aria-label="Play or pause">▶</button>
+          <button class="cbtn" id="btnNext" type="button" aria-label="Next song">⏭</button>
+        </div>
+        <div class="vol"><button id="btnMute" type="button" aria-label="Mute">🔊</button><input id="vol" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"></div>
+      </div>
+      <div class="song-list" id="songList"></div>
+    </div>
+  </div>
+</aside>
+
+<script>
+(() => {
+  /* ====== SONGS: add / rename songs here. Files go in the  songs  folder ====== */
+  const SONGS = [
+    { file: "songs/0001.mp3", title: "Baila Lento Funk" },
+    { file: "songs/0002.mp3", title: "Kalyani" },
+    { file: "songs/0003.mp3", title: "Udi Udi" }
+  ];
+
+  /* ====== HELP: simple questions and answers. Edit the text here ====== */
+  const QA = [
+    { q: "About FLIPER MC", a: "FLIPER MC is a Minecraft community and server. <b>Play your own way.</b> Find your crew, take on new challenges and make your mark. 💜" },
+    { q: "How to join?", a: "Open Minecraft, add the server address <b>play.flipermc.fun</b> (use the Copy server address button on the site), and join our Discord if you need help." },
+    { q: "Who is in the team?", a: "<b>Founder:</b> Ahmadplayz<br><b>Co-Founder:</b> TAPPU<br><b>Manager:</b> mujtaba_playz89<br><b>Admin:</b> cutie_not_found<br><b>Discord Staff:</b> maybe_zishii, LOST_DOST<br>See the <b>Our Team</b> page for more." },
+    { q: "Discord link", a: 'Join our Discord for updates and support: <a href="https://discord.gg/7W9Gdq792p" target="_blank" rel="noopener noreferrer">discord.gg/7W9Gdq792p</a>' },
+    { q: "Official store", a: 'Our official web store: <a href="https://market.flipersmp.workers.dev/" target="_blank" rel="noopener noreferrer">market.flipersmp.workers.dev</a>' },
+    { q: "Official app", a: "The official FLIPER MC Android app link is on the <b>Market</b> page (Official app &amp; store). Only install apps from official links." },
+    { q: "Instagram", a: 'Follow us on Instagram: <a href="https://www.instagram.com/ahmad_plyz?rpxt=ZDB3ZjdnZDc3MmR6" target="_blank" rel="noopener noreferrer">@ahmad_plyz</a>' },
+    { q: "Is it safe?", a: "Staff will <b>never</b> ask for your password or payment details. Only use the official links on this website." }
+  ];
+
+  /* ---------- panel + tabs ---------- */
+  const launch = document.getElementById("botLaunch");
+  const panel = document.getElementById("botPanel");
+  document.getElementById("botClose").addEventListener("click", () => panel.classList.remove("open"));
+  launch.addEventListener("click", () => panel.classList.toggle("open"));
+  document.querySelectorAll(".bot-tab").forEach(t => t.addEventListener("click", () => {
+    document.querySelectorAll(".bot-tab").forEach(x => x.classList.toggle("active", x === t));
+    document.querySelectorAll(".tab-view").forEach(v => v.classList.toggle("active", v.id === "tab-" + t.dataset.tab));
+  }));
+
+  /* ---------- help Q&A ---------- */
+  const msgs = document.getElementById("chatMessages");
+  const qList = document.getElementById("qList");
+  function addMsg(html, who) {
+    const el = document.createElement("div");
+    el.className = "chat-msg " + who;
+    if (who === "user") el.textContent = html; else el.innerHTML = html;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+  QA.forEach(item => {
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = item.q;
+    b.addEventListener("click", () => { addMsg(item.q, "user"); setTimeout(() => addMsg(item.a, "bot"), 200); });
+    qList.appendChild(b);
+  });
+
+  /* ---------- music player ---------- */
+  const audio = new Audio();
+  audio.preload = "auto";
+  audio.volume = 0.8;
+  let idx = 0, wantPlay = false;
+  const $ = id => document.getElementById(id);
+  const nowTitle = $("nowTitle"), nowStatus = $("nowStatus"), btnPlay = $("btnPlay"), seek = $("seek");
+  const tCur = $("tCur"), tDur = $("tDur"), songList = $("songList"), fab = $("musicFab"), hint = $("tapHint");
+  const fmt = t => { if (!isFinite(t)) return "0:00"; const m = Math.floor(t / 60), s = Math.floor(t % 60); return m + ":" + String(s).padStart(2, "0"); };
+
+  SONGS.forEach((song, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "song"; b.dataset.i = i;
+    b.innerHTML = '<span class="no">' + String(i + 1).padStart(2, "0") + '</span><span><b></b><small>' + song.file.split("/").pop() + '</small></span><span class="pl">▶</span>';
+    b.querySelector("b").textContent = song.title;
+    b.addEventListener("click", () => { load(i); play(); });
+    songList.appendChild(b);
+  });
+
+  function ui() {
+    const playing = !audio.paused;
+    btnPlay.textContent = playing ? "⏸" : "▶";
+    fab.textContent = playing ? "⏸" : "♪";
+    songList.querySelectorAll(".song").forEach((el, i) => {
+      el.classList.toggle("playing", i === idx);
+      el.querySelector(".pl").textContent = (i === idx && playing) ? "⏸" : "▶";
+    });
+  }
+  function load(i) {
+    idx = (i + SONGS.length) % SONGS.length;
+    audio.src = SONGS[idx].file;
+    nowTitle.textContent = SONGS[idx].title;
+    nowStatus.textContent = ""; nowStatus.classList.remove("err");
+    seek.value = 0; tCur.textContent = "0:00"; tDur.textContent = "0:00";
+    ui();
+  }
+  function play() {
+    wantPlay = true;
+    const p = audio.play();
+    if (p && p.catch) p.catch(err => {
+      if (err && err.name === "NotAllowedError") { hint.classList.add("show"); }
+    });
+  }
+  function pause() { wantPlay = false; audio.pause(); }
+
+  btnPlay.addEventListener("click", () => audio.paused ? play() : pause());
+  fab.addEventListener("click", () => audio.paused ? play() : pause());
+  $("btnNext").addEventListener("click", () => { load(idx + 1); play(); });
+  $("btnPrev").addEventListener("click", () => { if (audio.currentTime > 3) audio.currentTime = 0; else { load(idx - 1); play(); } });
+  audio.addEventListener("play", () => { hint.classList.remove("show"); ui(); });
+  audio.addEventListener("pause", ui);
+  audio.addEventListener("ended", () => { load(idx + 1); play(); });
+  audio.addEventListener("loadedmetadata", () => { tDur.textContent = fmt(audio.duration); });
+  audio.addEventListener("timeupdate", () => {
+    tCur.textContent = fmt(audio.currentTime);
+    if (audio.duration) seek.value = (audio.currentTime / audio.duration) * 100;
+  });
+  audio.addEventListener("error", () => {
+    nowStatus.textContent = "File not found: " + SONGS[idx].file + " (upload it in the songs folder)";
+    nowStatus.classList.add("err");
+    hint.classList.remove("show");
+  });
+  seek.addEventListener("input", () => { if (audio.duration) audio.currentTime = (seek.value / 100) * audio.duration; });
+  const vol = $("vol"), mute = $("btnMute");
+  vol.addEventListener("input", () => { audio.volume = +vol.value; audio.muted = false; mute.textContent = audio.volume === 0 ? "🔇" : "🔊"; });
+  mute.addEventListener("click", () => { audio.muted = !audio.muted; mute.textContent = audio.muted ? "🔇" : "🔊"; });
+
+  /* ---------- play 0001.mp3 when someone enters the website ---------- */
+  load(0);
+  play(); // works if the browser allows it
+  // Browsers block sound until the visitor touches the page, so start on the first tap / click / key.
+  function firstTouch() {
+    if (audio.paused && wantPlay && !audio.error) audio.play().catch(() => {});
+    ["pointerdown", "touchstart", "keydown", "click"].forEach(ev => document.removeEventListener(ev, firstTouch, true));
+  }
+  ["pointerdown", "touchstart", "keydown", "click"].forEach(ev => document.addEventListener(ev, firstTouch, true));
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+FLIPER MC WEBSITE - GUIDE (Roman Urdu)
+
+FOLDER KA STRUCTURE
+  index.html
+  assets/fliper-mc-logo.png
+  songs/0001.mp3   (Baila Lento Funk - site khulte hi chalega)
+  songs/0002.mp3   (Kalyani)
+  songs/0003.mp3   (Udi Udi)
+
+GANE KAISE DALNE HAIN
+1. Apne 3 mp3 files ke naam bilkul 0001.mp3, 0002.mp3, 0003.mp3 rakho (chhote letters).
+2. Unko "songs" folder ke andar daal do.
+3. Gane ka naam badalna ho to index.html mein "SONGS" list dhoondo aur title badal do.
+4. Naya gana: songs/0004.mp3 daalo aur SONGS list mein ek line add karo.
+
+AUTOPLAY KA MASLA
+Chrome/Safari bina touch ke awaaz wali audio block karte hain. Isliye site khulte hi
+0001.mp3 try hota hai, agar browser ne roka to visitor ke pehle tap/click par chal jata hai.
+
+GITHUB PAR UPLOAD (phone se: Chrome > 3 dot > Desktop site)
+1. github.com par account banao / login karo.
+2. Upar "+" > New repository. Naam: fliper-mc-website, Public select karo, Create.
+3. "uploading an existing file" par click karo.
+4. ZIP extract karke index.html, assets folder aur songs folder drag/select karke daalo.
+   (Browser se ek file max 25 MB, ek baar mein max 100 files.)
+5. Neeche "Commit changes" dabao.
+6. Settings > Pages > Source: "Deploy from a branch" > Branch: main, folder: /(root) > Save.
+7. 1-2 minute baad link milega: https://USERNAME.github.io/fliper-mc-website/
+
+LIMITS
+- Repo ka size 1 GB ke andar rakho (recommended). GitHub Pages site bhi 1 GB tak.
+- Ek file 25 MB se badi ho to browser upload nahi karega. Tab GitHub Desktop ya git use karo
+  (git se 100 MB tak file ja sakti hai). MP3 ko 128-192 kbps mein convert karo to 3-6 MB ki rehti hai.
+- Pages ka traffic limit lagbhag 100 GB/mahina hota hai.
+
+NOTE
+- Purana AI worker (Cloudflare) ab zaroori nahi, hata diya hai.
+- Copyright wale gaane public website par chalane se takedown ka risk hota hai.

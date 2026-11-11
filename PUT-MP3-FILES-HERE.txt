@@ -1,0 +1,5 @@
+Is folder (songs) mein apne mp3 files daalo:
+  0001.mp3  = Baila Lento Funk  (website khulte hi chalega)
+  0002.mp3  = Kalyani
+  0003.mp3  = Udi Udi
+Naam bilkul aise hi hone chahiye (chhote letters, .mp3).
